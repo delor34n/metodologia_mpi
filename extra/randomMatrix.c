@@ -14,8 +14,7 @@
 *
 *   COMPILACIÓN: 'gcc -o outputRand randomMatrix.c'
 *
-*   EJECUCIÓN:  './outputRand {numberColumnsA} {numberRowsA} {numberColumnsB} {numberRowsB}> input{numberInput}'
-*
+*   EJECUCIÓN:  './outputRand {numberColumnsA} {numberRowsA} {numberColumnsB} {numberRowsB} > input{numberInput}'
 *
 */
 
@@ -63,7 +62,7 @@ int main ( int argc , char *argv [ ] ) {
 	} else {
 
 		printf ( "\n\n ********* ERROR DE LOS ARGUMENTOS EN LA EJECUCIÓN********* \n\n" );
-		printf ( "LA EJECUCIÓN ES DE LA SIGUIENTE MANERA: ./outputRand -{numberColumns} -{numberRows} > input{numberInput}" );
+		printf ( "LA EJECUCIÓN ES DE LA SIGUIENTE MANERA: ./outputRand {numberColumnsA} {numberRowsA} {numberColumnsB} {numberRowsB} > input{numberInput}" );
 		printf ( "\n\n ********* VUELVA A EJECUTAR EL SCRIPT CORRECTAMENTE ********* \n" );
 
 	}
