@@ -28,6 +28,11 @@ void printMatrix ( float **matrix , int col , int row );
 void fillMatrix ( float **matrix , int col , int row );
 void multMatrix ( float **matrix1 , int col1 , int rows1 , float **matrix2 , int col2 , int rows2 , float **finalMatrix );
 
+/*
+*
+*	MAIN FUNCTION
+*
+*/
 int main ( void ) {
 
 	int rows1 = 0, col1 = 0, rows2 = 0, col2 = 0;
@@ -71,6 +76,11 @@ int main ( void ) {
 	return 0;
 }
 
+/*
+*
+*	MULTMATRIX FUNCTION
+*
+*/
 void multMatrix ( float **matrix1 , int col1 , int rows1 , float **matrix2 , int col2 , int rows2 , float **finalMatrix ) {
 
 	int i = 0 , j = 0 , k = 0;
@@ -93,6 +103,11 @@ void multMatrix ( float **matrix1 , int col1 , int rows1 , float **matrix2 , int
 
 }
 
+/*
+*
+*	FILLMATRIX FUNCTION
+*
+*/
 void fillMatrix ( float **matrix , int col , int row ) {
 
 	int i , j;
@@ -117,6 +132,11 @@ void fillMatrix ( float **matrix , int col , int row ) {
 
 }
 
+/*
+*
+*	PRINTMATRIX FUNCTION
+*
+*/
 void printMatrix ( float **matrix , int col , int row ) {
 
 	int i , j;
