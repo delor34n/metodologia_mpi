@@ -1,6 +1,28 @@
+/*
+*
+*	UNIVERSIDAD DE SANTIAGO DE CHILE
+*	FACULTAD DE CIENCIA
+*	DEPARTAMENTO DE MATEMÁTICA Y CIENCIA DE LA COMPUTACIÓN
+*	LICENCIATURA EN CIENCIA DE LA COMPUTACIÓN
+*	
+*
+*	NOMBRE: NICOLE OLIVARES
+*	PROFESOR: RUBÉN CARVAJAL SCHIAFFINO
+*
+*
+*	DESCRIPCIÓN: ESTE ALGORITMO REALIZA UNA MULTIPLICACIÓN DE DOS MATRICES (AxB=C) SENCUENCIALMENTE.
+*
+*	COMPILACIÓN: 'gcc -o outputSecuencial secuencialAlgorithm.c'
+*
+*	EJECUCIÓN:	'./outputSecuencial < input'
+*
+*
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
+#include "lib/time.h"
 
 void printMatrix ( int **matrix , int col , int row );
 void fillMatrix ( int **matrix , int col , int row );
