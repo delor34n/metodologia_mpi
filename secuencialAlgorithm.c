@@ -24,9 +24,9 @@
 #include <malloc.h>
 #include "lib/time.h"
 
-void printMatrix ( float **matrix , int col , int row );
-void fillMatrix ( float **matrix , int col , int row );
-void multMatrix ( float **matrix1 , int col1 , int rows1 , float **matrix2 , int col2 , int rows2 , float **finalMatrix );
+void printMatrix ( double **matrix , int col , int row );
+void fillMatrix ( double **matrix , int col , int row );
+void multMatrix ( double **matrix1 , int col1 , int rows1 , double **matrix2 , int col2 , int rows2 , double **finalMatrix );
 
 /*
 *
@@ -35,10 +35,17 @@ void multMatrix ( float **matrix1 , int col1 , int rows1 , float **matrix2 , int
 */
 int main ( void ) {
 
+	/*
+	*	Variables tstart, tend, Esec y Etime son para medir el tiempo de la ejecución
+	*	El resto sólo son variables contadoras.
+	*/
+	time_586 tstart , tend;
+	double Esec, Etime;
+
 	int rows1 = 0, col1 = 0, rows2 = 0, col2 = 0;
 	int i = 0;
 
-	float **matrix1, **matrix2, **finalMatrix;
+	double **matrix1, **matrix2, **finalMatrix;
 
 	scanf ( "%d" , &rows1 );
 	scanf ( "%d" , &col1 );
@@ -53,8 +60,8 @@ int main ( void ) {
 
 	}
 
-	matrix1 = ( float ** ) malloc ( rows1 * sizeof ( float * ) );
-	matrix2 = ( float ** ) malloc ( rows2 * sizeof ( float * ) );
+	matrix1 = ( double ** ) malloc ( rows1 * sizeof ( double * ) );
+	matrix2 = ( double ** ) malloc ( rows2 * sizeof ( double * ) );
 
 	fillMatrix ( matrix1 , col1 , rows1 );
 	fillMatrix ( matrix2 , col2 , rows2 );
@@ -62,16 +69,23 @@ int main ( void ) {
 	printMatrix ( matrix1 , col1 , rows1 );
 	printMatrix ( matrix2 , col2 , rows2 );
 
-	finalMatrix = ( float ** ) malloc ( rows1 * sizeof ( float * ) );
+	finalMatrix = ( double ** ) malloc ( rows1 * sizeof ( double * ) );
 
 	for ( i = 0 ; i < col2 ; i++ ) {
 
-		finalMatrix [ i ] = ( float * ) malloc ( col2 * sizeof ( float ) );
+		finalMatrix [ i ] = ( double * ) malloc ( col2 * sizeof ( double ) );
 
 	}
 
+	time ( tstart );
 	multMatrix ( matrix1 , col1 , rows1 , matrix2 , col2 , rows2 , finalMatrix );
-	printMatrix ( finalMatrix , col2 , rows1 );
+	time ( tend );
+
+	Etime = time_diff ( tend , tstart );
+	Esec = Etime / 1000000;
+	printf( "%f\n" , Esec );
+
+	//printMatrix ( finalMatrix , col2 , rows1 );
 
 	return 0;
 }
@@ -81,7 +95,7 @@ int main ( void ) {
 *	MULTMATRIX FUNCTION
 *
 */
-void multMatrix ( float **matrix1 , int col1 , int rows1 , float **matrix2 , int col2 , int rows2 , float **finalMatrix ) {
+void multMatrix ( double **matrix1 , int col1 , int rows1 , double **matrix2 , int col2 , int rows2 , double **finalMatrix ) {
 
 	int i = 0 , j = 0 , k = 0;
 
@@ -108,7 +122,7 @@ void multMatrix ( float **matrix1 , int col1 , int rows1 , float **matrix2 , int
 *	FILLMATRIX FUNCTION
 *
 */
-void fillMatrix ( float **matrix , int col , int row ) {
+void fillMatrix ( double **matrix , int col , int row ) {
 
 	int i , j;
 
@@ -121,11 +135,11 @@ void fillMatrix ( float **matrix , int col , int row ) {
 
 	for ( i = 0 ; i < row ; i++ ) {
 
-		matrix [ i ] = ( float * ) malloc ( col * sizeof ( float ) );
+		matrix [ i ] = ( double * ) malloc ( col * sizeof ( double ) );
 
 		for ( j = 0 ; j < col ; j++ ) {
 
-			scanf ( "%f" , &matrix [ i ] [ j ] );
+			scanf ( "%lf" , &matrix [ i ] [ j ] );
 		}
 
 	}
@@ -137,7 +151,7 @@ void fillMatrix ( float **matrix , int col , int row ) {
 *	PRINTMATRIX FUNCTION
 *
 */
-void printMatrix ( float **matrix , int col , int row ) {
+void printMatrix ( double **matrix , int col , int row ) {
 
 	int i , j;
 
@@ -145,7 +159,7 @@ void printMatrix ( float **matrix , int col , int row ) {
 
 		for ( j = 0 ; j < col ; j++ ) {
 
-			printf( "%f\t " , matrix [ i ] [ j ] );
+			printf( "%lf\t " , matrix [ i ] [ j ] );
 		}
 
 		printf ( "\n" );
