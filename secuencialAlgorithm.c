@@ -14,7 +14,7 @@
 *
 *	COMPILACIÓN: 'gcc -o outputSecuencial secuencialAlgorithm.c'
 *
-*	EJECUCIÓN:	'./outputSecuencial < input'
+*	EJECUCIÓN:	'./outputSecuencial < input{number} > outputSecuencial{numberInput}'
 *
 *
 */
@@ -24,16 +24,16 @@
 #include <malloc.h>
 #include "lib/time.h"
 
-void printMatrix ( int **matrix , int col , int row );
-void fillMatrix ( int **matrix , int col , int row );
-void multMatrix ( int **matrix1 , int col1 , int rows1 , int **matrix2 , int col2 , int rows2 , int **finalMatrix );
+void printMatrix ( float **matrix , int col , int row );
+void fillMatrix ( float **matrix , int col , int row );
+void multMatrix ( float **matrix1 , int col1 , int rows1 , float **matrix2 , int col2 , int rows2 , float **finalMatrix );
 
 int main ( void ) {
 
 	int rows1 = 0, col1 = 0, rows2 = 0, col2 = 0;
 	int i = 0;
 
-	int **matrix1, **matrix2, **finalMatrix;
+	float **matrix1, **matrix2, **finalMatrix;
 
 	scanf ( "%d" , &rows1 );
 	scanf ( "%d" , &col1 );
@@ -48,8 +48,8 @@ int main ( void ) {
 
 	}
 
-	matrix1 = ( int ** ) malloc ( rows1 * sizeof ( int * ) );
-	matrix2 = ( int ** ) malloc ( rows2 * sizeof ( int * ) );
+	matrix1 = ( float ** ) malloc ( rows1 * sizeof ( float * ) );
+	matrix2 = ( float ** ) malloc ( rows2 * sizeof ( float * ) );
 
 	fillMatrix ( matrix1 , col1 , rows1 );
 	fillMatrix ( matrix2 , col2 , rows2 );
@@ -57,11 +57,11 @@ int main ( void ) {
 	printMatrix ( matrix1 , col1 , rows1 );
 	printMatrix ( matrix2 , col2 , rows2 );
 
-	finalMatrix = ( int ** ) malloc ( rows1 * sizeof ( int * ) );
+	finalMatrix = ( float ** ) malloc ( rows1 * sizeof ( float * ) );
 
 	for ( i = 0 ; i < col2 ; i++ ) {
 
-		finalMatrix [ i ] = ( int * ) malloc ( col2 * sizeof ( int ) );
+		finalMatrix [ i ] = ( float * ) malloc ( col2 * sizeof ( float ) );
 
 	}
 
@@ -71,7 +71,7 @@ int main ( void ) {
 	return 0;
 }
 
-void multMatrix ( int **matrix1 , int col1 , int rows1 , int **matrix2 , int col2 , int rows2 , int **finalMatrix ) {
+void multMatrix ( float **matrix1 , int col1 , int rows1 , float **matrix2 , int col2 , int rows2 , float **finalMatrix ) {
 
 	int i = 0 , j = 0 , k = 0;
 
@@ -93,7 +93,7 @@ void multMatrix ( int **matrix1 , int col1 , int rows1 , int **matrix2 , int col
 
 }
 
-void fillMatrix ( int **matrix , int col , int row ) {
+void fillMatrix ( float **matrix , int col , int row ) {
 
 	int i , j;
 
@@ -106,18 +106,18 @@ void fillMatrix ( int **matrix , int col , int row ) {
 
 	for ( i = 0 ; i < row ; i++ ) {
 
-		matrix [ i ] = ( int * ) malloc ( col * sizeof ( int ) );
+		matrix [ i ] = ( float * ) malloc ( col * sizeof ( float ) );
 
 		for ( j = 0 ; j < col ; j++ ) {
 
-			scanf ( "%d" , &matrix [ i ] [ j ] );
+			scanf ( "%f" , &matrix [ i ] [ j ] );
 		}
 
 	}
 
 }
 
-void printMatrix ( int **matrix , int col , int row ) {
+void printMatrix ( float **matrix , int col , int row ) {
 
 	int i , j;
 
@@ -125,7 +125,7 @@ void printMatrix ( int **matrix , int col , int row ) {
 
 		for ( j = 0 ; j < col ; j++ ) {
 
-			printf( "%d\t " , matrix [ i ] [ j ] );
+			printf( "%f\t " , matrix [ i ] [ j ] );
 		}
 
 		printf ( "\n" );
